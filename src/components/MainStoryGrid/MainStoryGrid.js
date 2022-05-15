@@ -12,7 +12,7 @@ import MainStory from '../MainStory';
 import SecondaryStory from '../SecondaryStory';
 import OpinionStory from '../OpinionStory';
 import Advertisement from '../Advertisement';
-import { COLORS } from '../../constants';
+import { COLORS, QUERIES } from '../../constants';
 
 const isLast = (length, index) => length - 1 === index;
 
@@ -56,12 +56,27 @@ const MainStoryGrid = () => {
 const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
-    'main-story'
-    'secondary-stories'
-    'opinion-stories'
-    'advertisement';
+    "main-story"
+    "secondary-stories"
+    "opinion-stories"
+    "advertisement";
   gap: 48px;
   margin-bottom: 48px;
+
+  @media ${QUERIES.tabletAndUp} {
+    grid-template-areas:
+      "main-story secondary-stories"
+      "opinion-stories opinion-stories"
+      "advertisement advertisement";
+    grid-template-columns: 2fr 1fr;
+  }
+
+  @media ${QUERIES.laptopAndUp} {
+    grid-template-areas:
+      "main-story secondary-stories opinion-stories"
+      "main-story advertisement advertisement";
+    grid-template-columns: 5fr 4fr 3fr;
+  }
 `;
 
 const MainStorySection = styled.section`
