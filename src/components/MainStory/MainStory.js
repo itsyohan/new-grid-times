@@ -44,6 +44,10 @@ const Abstract = styled.p`
   font-size: 1rem;
   margin-bottom: 1em;
   white-space: pre-wrap;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 `;
 
 const Location = styled.span`
