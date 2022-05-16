@@ -28,19 +28,19 @@ const MainStoryGrid = () => {
           {SECONDARY_STORIES.map((story, index) => (
             <>
               <SecondaryStory key={story.id} {...story} />
-              { !isLast(SECONDARY_STORIES.length, index) && <Divider/>}
+              { !isLast(SECONDARY_STORIES.length, index) && <BottomDivider/>}
             </>
           ))}
         </StoryList>
       </SecondaryStorySection>
-
+      
       <OpinionSection>
         <SectionTitle>Opinion</SectionTitle>
         <StoryList>
           {OPINION_STORIES.map((story, index) => (
             <>
               <OpinionStory key={story.id} {...story} />
-              { !isLast(OPINION_STORIES.length, index) && <Divider/>}
+              { !isLast(OPINION_STORIES.length, index) && <BottomDivider/>}
             </>
           ))}
         </StoryList>
@@ -85,6 +85,12 @@ const MainStorySection = styled.section`
 
 const SecondaryStorySection = styled.section`
   grid-area: secondary-stories;
+
+  @media ${QUERIES.laptopAndUp} {
+    padding-left: 16px;
+    margin-left: 16px;
+    border-left: 1px solid ${COLORS.gray[300]};
+  }
 `;
 
 const StoryList = styled.div`
@@ -92,17 +98,24 @@ const StoryList = styled.div`
   flex-direction: column;
 `;
 
-const Divider = styled.div`
+const BottomDivider = styled.div`
   margin: 16px 0;
   border-top: 1px solid ${COLORS.gray[300]};
 `
 
 const OpinionSection = styled.section`
   grid-area: opinion-stories;
+
+  @media ${QUERIES.laptopAndUp} {
+    padding-left: 16px;
+    margin-left: 16px;
+    border-left: 1px solid ${COLORS.gray[300]};
+  }
 `;
 
 const AdvertisementSection = styled.section`
   grid-area: advertisement;
 `;
+
 
 export default MainStoryGrid;
