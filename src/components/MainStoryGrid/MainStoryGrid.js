@@ -28,22 +28,22 @@ const MainStoryGrid = () => {
           {SECONDARY_STORIES.map((story, index) => (
             <>
               <SecondaryStory key={story.id} {...story} />
-              { !isLast(SECONDARY_STORIES.length, index) && <BottomDivider/>}
+              {!isLast(SECONDARY_STORIES.length, index) && <BottomDivider />}
             </>
           ))}
         </StoryList>
       </SecondaryStorySection>
-      
+
       <OpinionSection>
         <SectionTitle>Opinion</SectionTitle>
-        <StoryList>
+        <OpinionStoryList>
           {OPINION_STORIES.map((story, index) => (
             <>
               <OpinionStory key={story.id} {...story} />
-              { !isLast(OPINION_STORIES.length, index) && <BottomDivider/>}
+              {!isLast(OPINION_STORIES.length, index) && <BottomDivider />}
             </>
           ))}
-        </StoryList>
+        </OpinionStoryList>
       </OpinionSection>
 
       <AdvertisementSection>
@@ -66,8 +66,8 @@ const Wrapper = styled.div`
   @media ${QUERIES.tabletAndUp} {
     grid-template-areas:
       "main-story secondary-stories"
-      "opinion-stories opinion-stories"
-      "advertisement advertisement";
+      "advertisement advertisement"
+      "opinion-stories opinion-stories";
     grid-template-columns: 2fr 1fr;
   }
 
@@ -96,6 +96,12 @@ const SecondaryStorySection = styled.section`
 const StoryList = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const OpinionStoryList = styled(StoryList)`
+  @media ${QUERIES.tabletOnly} {
+    flex-direction: row;
+  }
 `;
 
 const BottomDivider = styled.div`
